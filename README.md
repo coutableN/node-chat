@@ -162,6 +162,8 @@ If you want to custom the node-chat, you need to know the functions and events u
 * messageFromAdmin
 * banned
 ```javascript
+// LISTENERS
+
 // update client number
 socket.on('updateClientNumber', (data) => {
     getClientNumber(data.clientNumber);
@@ -184,6 +186,8 @@ socket.on('banned', (data) => {
 ```
 **node-chat clients can only emit message**
 ```javascript
+// EMITTER
+
 socket.emit('message', { name : ncName.value, message : ncMessage.value });
 ```
 
