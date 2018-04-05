@@ -8,7 +8,7 @@ A simple file based, real time chat client-server solution in node.js, ready to 
 * [Administration](#administration)
 * [Auth](#auth)
 * [Files](#files)
-	* [banned-addresses](#bannedaddresses)
+	* [banned-addresses](#banned-addresses)
 	* [users](#users)
 	* [log](#log)
 * [Create a chat client in another page](#configclient)
