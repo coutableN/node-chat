@@ -12,6 +12,7 @@ A simple file based, real time chat client-server solution in node.js, ready to 
 	* [banned-addresses](#banned-addresses)
 	* [users](#users)
 	* [log](#log)
+* [Functions & Events](#functions)
 
 ## Intro
 
@@ -44,7 +45,7 @@ Now your application has 3 new urls
 * **/node-chat-login** : the login page.
 * **/node-chat-admin** : the administration panel, you need to auth on /node-chat-login to get here.
 
-All clients can now chat in real time either at **<your_domain>/chat** or anywhere in a page configured. see [create a chat client in another page](#configclient)
+All clients can now chat in real time either at **<your_domain>/chat** or anywhere in a page configured. see [create a chat client in another page](#create-a-chat-client-in-another-page)
 
 ## Administration
 
@@ -148,3 +149,59 @@ type :	ADMIN_BAN -- datetime -- @IP banned
 admin name is auto set by authentication but **can be changed by the admin**, 
 this is the only case where you can see an admin name that is not registered
 in the [users] file in your logs.
+
+## Functions
+
+If you want to custom the node-chat, you need to know the functions and events under the hood :
+
+### Client
+
+**node-chat clients IO event listeners**
+* updateClientNumber
+* message
+* messageFromAdmin
+* banned
+```javascript
+// update client number
+socket.on('updateClientNumber', (data) => {
+    getClientNumber(data.clientNumber);
+});
+
+// add message from server to DOM
+socket.on('message', (data) => {
+    appendMessageToDOM(data.name, data.message, null, data.time);
+});
+
+// add message from server (admin) to DOM
+socket.on('messageFromAdmin', (data) => {
+    appendMessageToDOM(data.name, data.message, 'admin', data.time);
+});
+
+// banned from chat
+socket.on('banned', (data) => {
+    appendMessageToDOM('BAN' , data.message, 'banned', data.time);
+});
+```
+**node-chat clients can only emit message**
+```javascript
+socket.emit('message', { name : ncName.value, message : ncMessage.value });
+```
+
+### Server
+**node-chat server IO event listeners**
+* connection
+* message
+* messageFromAdmin
+* banIp
+* addAdmin
+* disconnect
+
+**check index.js file for code**
+
+**node-chat server IO event emitters**
+* updateClientNumber
+* message
+* messageFromAdmin
+* banned
+
+**check index.js file for code**
