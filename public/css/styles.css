@@ -1,0 +1,63 @@
+@keyframes anim-client-number {
+    from {
+        color: #fff;
+        position: relative;
+        top: 0px;
+    } to {
+        color: #4caf50;
+        position: relative;
+        top: -15px;
+    }
+}
+.form-group {
+    margin: 0px;
+}
+.header {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+.container-border {
+    box-shadow: 2px 0 15px -4px rgba(31, 73, 125, 0.8), -2px 0 8px -4px rgba(31, 73, 125, 0.8);
+    padding: 8px;
+}
+#ncChatZone {
+    height: 65vh;
+    background-color: lightgrey;
+    border-radius: .5em;
+    overflow-y: auto;
+}
+.div-info {
+    background-color: #007bff;
+    color: #fff;
+}
+form, form * {
+    border-radius: .5em;
+}
+.delete-ip:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+.anim-client-number {  
+    animation-name: anim-client-number;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(.5,-0.69,.63,.22);
+    animation-duration: .5s;
+}
+.padding-title {
+    background-color: #333;
+    color: #fff;
+    padding-top: .2em;
+    padding-bottom: .2em;
+    margin-top: .8em;
+    margin-bottom: .4em;
+}
+#ncBannedAddressesZone, #ncUsersZone {
+    margin-top: .8em;
+    font-weight: bold;
+}
+footer {
+    margin-top: 2em;
+}
