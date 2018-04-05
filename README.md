@@ -1,13 +1,25 @@
 # node-chat
 
 A simple file based, real time chat in node.js, ready to be deployed in your applications in two lines.
-Including :
 
 * Real time communication based on web sockets
 * Administration panel
 * Ban users by IP address
-* Manage administrators with login and passwords
-* Full log and history
+* Manage administrators with login and password
+* Log system
+
+## table of content
+* Deploy
+
+## Deploy
+
+```javascript
+const app = require('express')();
+const server = require('http').createServer(app);
+// create a chat server
+const nodeChat = require('node-chat');
+nodeChat.createChatServer(app, server);
+```
 
 
 Authentication as admin :
