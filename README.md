@@ -9,7 +9,7 @@ A simple file based, real time chat in node.js, ready to be deployed in your app
 * Log system
 
 ## table of content
-* [Deploy]
+* [Deploy](#deploy)
 
 ## Deploy
 
