@@ -139,12 +139,12 @@ Exemple : "   "/n (three space and a new line) will allow you to login without u
 
 type :	INFO_CONN -- datetime -- client @IP
 
-type :	NEW_MSG -- datetime -- client @IP -- client pseudo -- client message
+type :	NEW_MSG -- datetime -- client @IP -- client name -- client message
 
-type :	ADMIN_MSG -- datetime -- admin pseudo -- admin message
+type :	ADMIN_MSG -- datetime -- admin name -- admin message
 
 type :	ADMIN_BAN -- datetime -- @IP banned
 
 admin name is auto set by authentication but **can be changed by the admin**, 
-this is the only case where you can see an admin pseudo that is not registered
+this is the only case where you can see an admin name that is not registered
 in the [users] file in your logs.
