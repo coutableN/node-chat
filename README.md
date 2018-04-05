@@ -60,7 +60,7 @@ Go to **/node-chat-login** and log with a correct user/password to get **/node-c
 
 ## Files
 
-### banned-addresses [file] :(#banned-addresses)
+### banned-addresses
 
 Always edit this file from /node-chat-admin
 Or restart the node server after. 
@@ -71,7 +71,7 @@ the syntax is the following :
 @ip1
 @ip2
 
-### users [file] :
+### users
 	
 users is a file where all admins are registered with this syntax :
 
@@ -83,7 +83,7 @@ But you can do what you want in the users file.
 
 Exemple : "   "/n (three space and a new line) will allow you to login without user name or password. **DON'T DO THIS IN PRODUCTION OR ANYONE CAN ACCESS THE ADMIN PANEL**
 
-### log [file] :
+### log
 
 type :	INFO_CONN -- datetime -- client @IP
 type :	NEW_MSG -- datetime -- client @IP -- client pseudo -- client message
