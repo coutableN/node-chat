@@ -23,10 +23,10 @@ const server = require('http').createServer(app);
 const nodeChat = require('node-chat');
 nodeChat.createChatServer(app, server);
 ```
-Now your application have 3 new urls
-* */chat*
-* */node-chat-login*
-* */node-chat-admin*
+Now your application has 3 new urls
+* **/chat** : a single page application which is the chat room.
+* **/node-chat-login** : the login page
+* **/node-chat-admin** : the administration panel, you need to auth on /node-chat-login to get node-chat-admin
 
 
 Authentication as admin :
