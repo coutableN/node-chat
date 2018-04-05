@@ -2,14 +2,13 @@
 
 A simple file based, real time chat in node.js, ready to be deployed in your applications in two lines.
 Including :
-	_ Real time communication based on web sockets
-	_ Administration panel
-	_ Ban users by IP address
-	_ Manage administrators with login and passwords
-	_ Full log and history
 
+*Real time communication based on web sockets
+*Administration panel
+*Ban users by IP address
+*Manage administrators with login and passwords
+*Full log and history
 
-SERVER SIDE :
 
 Authentication as admin :
 
@@ -19,8 +18,10 @@ Authentication as admin :
 	<DOMAIN | @IP>/node-chat-login
 
 	and enter correct pseudo/password association.
+	
+## Files
 
-banned-addresses [file] :
+### banned-addresses [file] :
 
 	Always edit this file from /node-chat-admin
 	Or restart the node server after. 
@@ -31,14 +32,14 @@ banned-addresses [file] :
 	@ip1
 	@ip2
 
-users [file] :
+### users [file] :
 	
 	users is a file where all admin are registered with this syntax :
 
 	name1 password1
 	name2 password2
 
-log [file] :
+### log [file] :
 
 	type :	INFO_CONN -- datetime -- client @IP
 	type :	NEW_MSG -- datetime -- client @IP -- client pseudo -- client message
