@@ -3,11 +3,11 @@
 A simple file based, real time chat in node.js, ready to be deployed in your applications in two lines.
 Including :
 
-*Real time communication based on web sockets
-*Administration panel
-*Ban users by IP address
-*Manage administrators with login and passwords
-*Full log and history
+* Real time communication based on web sockets
+* Administration panel
+* Ban users by IP address
+* Manage administrators with login and passwords
+* Full log and history
 
 
 Authentication as admin :
