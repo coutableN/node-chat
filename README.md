@@ -63,7 +63,7 @@ Users are specified in the node-chat/users file and can be added in the admin pa
 
 ## Create a chat client in another page
 
-If you want a chat client that is not alone in an URL, you can create a chat client in the HTML page you want.
+If you want to include the chat elsewhere, you can create a chat client in the HTML page you want.
 
 **Don't forget to add the node-chat-client.js file and the socket.io dependency**
 ```javascript
