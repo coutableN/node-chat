@@ -75,8 +75,8 @@ Note : you already have the socket.io folder since it's a specified dependency o
 Minimum elements :
 
 ```html
-<div id="chatZone"></div> <!-- where messages are appendend -->
-<div id="nodeChatClientNumber"></div> <!-- real time number of clients connected -->
+<div id="ncChatZone"></div> <!-- where messages are appendend -->
+<div id="ncClientNumber"></div> <!-- real time number of clients connected -->
 
 <!-- form for your users to chat -->
 <form id="ncFormChat">
