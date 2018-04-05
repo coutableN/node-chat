@@ -104,7 +104,6 @@ exports.createChatServer = (app, server) => {
 		// message from client => broadcast to all clients
 		socket.on('message', (data) => {
 			logWriter.write(`NEW_MSG -- ${ dateUtil.fullTime() } -- ${ ipClient } -- ${ data.name } -- ${ data.message }\n`);
-			socket.broadcast.emit('messageByAdmin', { name : data.name, message : data.message, ipClient : ipClient, time : dateUtil.time() });
 			socket.broadcast.emit('message', { name : data.name, message : data.message, time : dateUtil.time() });
 		});
 
