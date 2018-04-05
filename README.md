@@ -86,8 +86,11 @@ Exemple : "   "/n (three space and a new line) will allow you to login without u
 ### log
 
 type :	INFO_CONN -- datetime -- client @IP
+
 type :	NEW_MSG -- datetime -- client @IP -- client pseudo -- client message
+
 type :	ADMIN_MSG -- datetime -- admin pseudo -- admin message
+
 type :	ADMIN_BAN -- datetime -- @IP banned
 
 admin name is auto set by authentication but **can be changed by the admin**, 
