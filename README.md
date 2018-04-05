@@ -2,7 +2,7 @@
 
 A simple file based, real time chat client-server solution in node.js, ready to be deployed in your applications in two lines.
 
-## table of content
+## Table of content
 * [Intro](#intro)
 * [Deploy](#deploy)
 * [Administration](#administration)
