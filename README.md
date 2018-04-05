@@ -13,7 +13,8 @@ A simple file based, real time chat in node.js, ready to be deployed in your app
 
 ## Deploy
 
-First of all you need the node-chat folder in your node_modules.
+**First of all you need the node-chat folder in your node_modules.**
+
 Then, you can createChatServer.
 
 ```javascript
