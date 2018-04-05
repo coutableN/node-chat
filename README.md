@@ -28,6 +28,7 @@ The solution comes with a single page application as the chat room at **<your_do
 ## Deploy
 
 **First of all you need the node-chat folder in your node_modules.**
+**To check you have all the dependencies, run npm install**
 
 Then, you can createChatServer.
 
@@ -71,7 +72,26 @@ If you want a chat client that is not alone in an URL, you can create a chat cli
 ```
 Note : you already have the socket.io folder since it's a specified dependency of node-chat in package.json
 
-**If you don't have all node-chat dependencies installed in your server, please get the package.json file and run npm install**
+Now, let's look at the chat.ejs file
+```html
+        <div class="container">
+            <div class="row d-flex flex-column justify-content-center">
+                <div class="container">
+                    <div id="chatZone">
+                        <div class="alert div-info text-center">
+                            <img src="/node-chat/img/user.svg" width=20 height=20 alt="">
+                            <span id="nodeChatClientNumber"></span>
+                        </div>
+                    </div>
+                    <form action="/" method="post" class="row form-group d-flex" id="formChat">
+                        <input class="form-control col-md-2" type="text" placeholder="Pseudo" id="pseudo" autofocus>
+                        <input class="form-control col-md-8" type="text" placeholder="Hi miner, enter a message..." id="inputField">
+                        <input class="btn btn-primary col-md-2" type="submit" placeholder="Send">
+                    </form>
+                </div>
+            </div>
+        </div>
+```
 
 ## Files
 
