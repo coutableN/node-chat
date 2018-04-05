@@ -9,13 +9,15 @@ A simple file based, real time chat client-server solution in node.js, ready to 
 
 ## Intro
 
-node-chat is a node.js package to deploy a chat server that includes :
+node-chat is a node.js package to deploy a mono-room chat server that includes :
 
 * Real time communication based on web sockets
 * Administration panel
 * Ban users by @IP address
 * Manage administrators with login and password
 * Log system
+
+The solution comes with a single page application as the chat room at **<your_domain>/chat**, with the client javascript file you can implement a chat instance in all your pages.
 
 ## Deploy
 
@@ -35,6 +37,7 @@ Now your application has 3 new urls
 * **/node-chat-login** : the login page.
 * **/node-chat-admin** : the administration panel, you need to auth on /node-chat-login to get here.
 
+All clients can now chat in real time either at **<your_domain>/chat** or anywhere in a page configured. see [config another page as a chat client](#configclient)
 
 Authentication as admin :
 
