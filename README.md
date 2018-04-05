@@ -79,9 +79,9 @@ Minimum elements :
 <div id="nodeChatClientNumber"></div> <!-- real time number of clients connected -->
 
 <!-- form for your users to chat -->
-<form id="formChat">
-	<input type="text" id="pseudo">
-	<input type="text" id="inputField">
+<form id="ncFormChat">
+	<input type="text" id="ncName">
+	<input type="text" id="ncMessage">
 	<input type="submit">
 </form>
 ```
@@ -91,17 +91,17 @@ You can look at the chat.ejs core content to see how it's done in the **/chat** 
         <div class="container">
             <div class="row d-flex flex-column justify-content-center">
 		<!-- you need an element with #chatZone, it's where all messages are appended -->
-                <div id="chatZone">
+                <div id="ncChatZone">
                     <div class="alert div-info text-center">
                         <img src="/node-chat/img/user.svg" width=20 height=20 alt="">
 			<!-- element #nodeChatClientNumber gets in real time the number of clients connected to the chat -->
-                        <span id="nodeChatClientNumber"></span>
+                        <span id="ncClientNumber"></span>
                     </div>
                 </div>
 		<!-- most important part, you need a form with #formChat and an input #pseudo, input #inputField -->
-                <form action="/" method="post" class="row form-group d-flex" id="formChat">
-                    <input class="form-control col-md-2" type="text" placeholder="Pseudo" id="pseudo" autofocus>
-                    <input class="form-control col-md-8" type="text" placeholder="Hi miner, enter a message..." id="inputField">
+                <form action="/" method="post" class="row form-group d-flex" id="ncFormChat">
+                    <input class="form-control col-md-2" type="text" placeholder="Name" id="ncName" autofocus>
+                    <input class="form-control col-md-8" type="text" placeholder="Hi, enter a message..." id="ncMessage">
                     <input class="btn btn-primary col-md-2" type="submit" placeholder="Send">
                 </form>
             </div>
