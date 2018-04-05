@@ -56,7 +56,9 @@ First, you have to be authentified.
 
 ## Auth
 
-Go to **/node-chat-login** and log with a correct user/password to get **/node-chat-admin**. Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
+Go to **/node-chat-login** and log with a correct user/password to get **/node-chat-admin**.
+
+Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
 
 ## Files
 
@@ -98,6 +100,3 @@ type :	ADMIN_BAN -- datetime -- @IP banned
 admin name is auto set by authentication but **can be changed by the admin**, 
 this is the only case where you can see an admin pseudo that is not registered
 in the [users] file in your logs.
-
-Made in France by Nicolas Coutable
-coutable.n@hotmail.fr
