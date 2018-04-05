@@ -209,3 +209,6 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 * banned
 
 **check index.js file for code**
+
+
+Made by Nicolas Coutable - 2018
