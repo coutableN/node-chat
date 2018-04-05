@@ -72,23 +72,38 @@ If you want a chat client that is not alone in an URL, you can create a chat cli
 ```
 Note : you already have the socket.io folder since it's a specified dependency of node-chat in package.json
 
-Now, let's look at the chat.ejs file
+Minimum elements :
+
+```html
+<div id="chatZone"></div> <!-- where messages are appendend -->
+<div id="nodeChatClientNumber"></div> <!-- real time number of clients connected -->
+
+<!-- form for your users to chat -->
+<form id="formChat">
+	<input type="text" id="pseudo">
+	<input type="text" id="inputField">
+	<input type="submit">
+</form>
+```
+
+You can look at the chat.ejs core content to see how it's done in the **/chat** app.
 ```html
         <div class="container">
             <div class="row d-flex flex-column justify-content-center">
-                <div class="container">
-                    <div id="chatZone">
-                        <div class="alert div-info text-center">
-                            <img src="/node-chat/img/user.svg" width=20 height=20 alt="">
-                            <span id="nodeChatClientNumber"></span>
-                        </div>
+		<!-- you need an element with #chatZone, it's where all messages are appended -->
+                <div id="chatZone">
+                    <div class="alert div-info text-center">
+                        <img src="/node-chat/img/user.svg" width=20 height=20 alt="">
+			<!-- element #nodeChatClientNumber gets in real time the number of clients connected to the chat -->
+                        <span id="nodeChatClientNumber"></span>
                     </div>
-                    <form action="/" method="post" class="row form-group d-flex" id="formChat">
-                        <input class="form-control col-md-2" type="text" placeholder="Pseudo" id="pseudo" autofocus>
-                        <input class="form-control col-md-8" type="text" placeholder="Hi miner, enter a message..." id="inputField">
-                        <input class="btn btn-primary col-md-2" type="submit" placeholder="Send">
-                    </form>
                 </div>
+		<!-- most important part, you need a form with #formChat and an input #pseudo, input #inputField -->
+                <form action="/" method="post" class="row form-group d-flex" id="formChat">
+                    <input class="form-control col-md-2" type="text" placeholder="Pseudo" id="pseudo" autofocus>
+                    <input class="form-control col-md-8" type="text" placeholder="Hi miner, enter a message..." id="inputField">
+                    <input class="btn btn-primary col-md-2" type="submit" placeholder="Send">
+                </form>
             </div>
         </div>
 ```
