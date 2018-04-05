@@ -23,7 +23,7 @@ node-chat is a node.js package to deploy a mono-room chat server that includes :
 * Manage administrators with login and password
 * Log system
 
-The solution comes with a single page application as the chat room at **<your_domain>/chat**, with the client javascript file you can implement a chat instance in all your pages.
+The solution comes with a single page application as the chat room at **<your_domain>/chat**, note that with the javascript client file you can create a chat where you want.
 
 ## Deploy
 
