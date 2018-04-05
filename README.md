@@ -56,7 +56,7 @@ First, you have to be authentified.
 
 ## Auth
 
-Go to **/node-chat-login** and log with a correct user/password to get **/node-chat-admin**. Users are specified in the node-chat/users file and can be added in the admin panel.
+Go to **/node-chat-login** and log with a correct user/password to get **/node-chat-admin**. Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
 
 ## Files
 
