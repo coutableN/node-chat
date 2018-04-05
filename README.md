@@ -69,6 +69,7 @@ banned-addresses stores all @IP that are banned from the chat server
 the syntax is the following :
 
 @ip1
+
 @ip2
 
 ### users
@@ -76,6 +77,7 @@ the syntax is the following :
 users is a file where all admins are registered with this syntax :
 
 name1 password1
+
 name2 password2
 
 When creating an admin from the admin panel, name must be less than 10 chars and password more than 4.
