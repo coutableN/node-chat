@@ -9,9 +9,11 @@ A simple file based, real time chat in node.js, ready to be deployed in your app
 * Log system
 
 ## table of content
-* Deploy
+* [Deploy]
 
 ## Deploy
+
+First of all you need the node-chat folder in your node_modules.
 
 ```javascript
 const app = require('express')();
@@ -20,6 +22,7 @@ const server = require('http').createServer(app);
 const nodeChat = require('node-chat');
 nodeChat.createChatServer(app, server);
 ```
+
 
 
 Authentication as admin :
