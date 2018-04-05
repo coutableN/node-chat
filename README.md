@@ -7,11 +7,11 @@ A simple file based, real time chat client-server solution in node.js, ready to 
 * [Deploy](#deploy)
 * [Administration](#administration)
 * [Auth](#auth)
+* [Create a chat client in another page](#create-a-chat-client-in-another-page)
 * [Files](#files)
 	* [banned-addresses](#banned-addresses)
 	* [users](#users)
 	* [log](#log)
-* [Create a chat client in another page](#configclient)
 
 ## Intro
 
@@ -59,6 +59,9 @@ First, you have to be authentified.
 Go to **/node-chat-login** and log with a correct user/password to get **/node-chat-admin**.
 
 Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
+
+## Create a chat client in another page
+
 
 ## Files
 
