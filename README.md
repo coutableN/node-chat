@@ -6,6 +6,7 @@ A simple file based, real time chat client-server solution in node.js, ready to 
 * [Intro](#intro)
 * [Deploy](#deploy)
 * [Auth](#auth)
+* [Configure another page as client](#configclient)
 
 ## Intro
 
@@ -37,7 +38,7 @@ Now your application has 3 new urls
 * **/node-chat-login** : the login page.
 * **/node-chat-admin** : the administration panel, you need to auth on /node-chat-login to get here.
 
-All clients can now chat in real time either at **<your_domain>/chat** or anywhere in a page configured. see [config another page as a chat client](#configclient)
+All clients can now chat in real time either at **<your_domain>/chat** or anywhere in a page configured. see [configure another page as a chat client](#configclient)
 
 Authentication as admin :
 
