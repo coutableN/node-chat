@@ -31,6 +31,7 @@ exports.createChatServer = (app, server) => {
 	.set('views', path.join(__dirname, '../node-chat/views'))
 	// virtual path for static client files
 	.use('/node-chat', express.static(__dirname + '/public'))
+	.use('/bootstrap', express.static(__dirname + '/../bootstrap/dist'))
 	.use(bodyParser.urlencoded({ extended : true }))
 	.use(bodyParser.json())
 
@@ -39,24 +40,24 @@ exports.createChatServer = (app, server) => {
 		res.render('chat.ejs');
 	})
 
-	.get('/node-chat-login', (req, res) => {
-		res.render('node-chat-login.ejs', { errorLogin : false });
+	.get('/nc-login', (req, res) => {
+		res.render('nc-login.ejs', { errorLogin : false });
 	})
 
-	.post('/node-chat-admin', (req, res) => {
+	.post('/nc-admin', (req, res) => {
 		// read users and login if user is correct
 		let users = fs.readFileSync(`${ pathToFiles }users`, 'utf-8').split(/\r?\n/);
 
 		for (let i = 0; i < users.length; i++) {
 			if (req.body.login === users[i].split(' ')[0] && req.body.pwd === users[i].split(' ')[1]) {
-				res.render('node-chat-admin.ejs', {
+				res.render('nc-admin.ejs', {
 					name : req.body.login,
 					bannedAddresses : globalBannedAddresses,
 					users : globalUsersFormated
 				});
 			}
 		}
-		res.render('node-chat-login.ejs', { errorLogin : true });
+		res.render('nc-login.ejs', { errorLogin : true });
 	})
 
 	// webSockets
