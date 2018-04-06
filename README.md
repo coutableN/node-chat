@@ -111,6 +111,8 @@ You can look at the chat.ejs core content to see how it's done in the **/chat** 
 
 ## Files
 
+**node-chat is based on files and not dependent to any database.**
+
 ### banned-addresses
 
 Always edit this file from /node-chat-admin
