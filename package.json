@@ -1,5 +1,5 @@
 {
-  "name": "node-chat",
+  "name": "nodeChat",
   "version": "0.0.1",
   "description" : "client-server chat system for node.js application(Real time communication, Administration panel, Ban system...)",
   "main" : "index.js",
