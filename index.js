@@ -1,8 +1,7 @@
 /*
 *	node-chat
-*	Proudly made in France
 *	by Nicolas Coutable
-*	http://nicolas-coutable.fr
+*	nicolas-coutable.fr
 *	coutable.n@hotmail.fr
 *	v0.0.1
 *	04/2018
