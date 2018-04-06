@@ -42,8 +42,8 @@ nodeChat.createChatServer(app, server);
 ```
 Now your application has 3 new urls
 * **/chat** : a single page application which is the chat room.
-* **/node-chat-login** : the login page.
-* **/node-chat-admin** : the administration panel, you need to auth on /node-chat-login to get here.
+* **/nc-login** : the login page.
+* **/nc-admin** : the administration panel, you need to auth on /nc-login to get here.
 
 All clients can now chat in real time either at **<your_domain>/chat** or anywhere in a page configured. see [create a chat client in another page](#create-a-chat-client-in-another-page)
 
@@ -58,13 +58,14 @@ First, you have to be authentified.
 
 ## Auth
 
-Go to **/node-chat-login** and log with a correct user/password to get **/node-chat-admin**.
+Go to **/nc-login** and log with a correct user/password to get **/nc-admin**.
 
 Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
 
 ## Create a chat client in another page
 
 If you want to include the chat elsewhere, you can create a chat client in the HTML page you want.
+This client will still be related to the /nc-admin panel.
 
 **Don't forget to add the node-chat-client.js file and the socket.io dependency**
 ```javascript
@@ -115,7 +116,7 @@ You can look at the chat.ejs core content to see how it's done in the **/chat** 
 
 ### banned-addresses
 
-Always edit this file from /node-chat-admin
+Always edit this file from /nc-admin
 Or restart the node server after. 
 
 banned-addresses stores all @IP that are banned from the chat server
@@ -202,7 +203,6 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 * addAdmin
 * disconnect
 
-**check index.js file for code**
 
 **node-chat server IO event emitters**
 * updateClientNumber
@@ -210,7 +210,7 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 * messageFromAdmin
 * banned
 
-**check index.js file for code**
+**check index.js file fore more**
 
 
 Made by Nicolas Coutable - 2018

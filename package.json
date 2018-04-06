@@ -1,6 +1,8 @@
 {
-  "name": "nodejs-chat",
+  "name": "node-chat",
   "version": "0.0.1",
+  "description" : "client-server chat system for node.js application(Real time communication, Administration panel, Ban system...)",
+  "main" : "index.js",
   "dependencies": {
     "body-parser": "^1.18.2",
     "ejs": "^2.5.8",
@@ -8,7 +10,13 @@
     "nodemon": "^1.17.3",
     "socket.io": "^2.1.0"
   },
-  "scripts": {
-    "start": "nodemon server.js"
-  }
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/coutableN/node-chat"
+  },
+  "keywords" : [
+    "node-chat",
+    "coutableN",
+  ],
+  "author" : "Nicolas Coutable"
 }

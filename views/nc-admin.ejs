@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Admin | node-chat</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- styles.css -->
+        <link rel="stylesheet" href="/node-chat/css/styles.css">
+    </head>
+
+    <body>
+        <div class="text-center header">
+            <h4>node-chat-admin</h4>
+        </div>
+            <div class="container d-flex flex-column justify-content-center">
+                <div id="ncChatZone">
+                    <div class="alert div-info text-center">
+                        <h6>Hello <b><%= name %></b>, you are admin</h6>
+                        <img src="/node-chat/img/user.svg" width=20 height=20 alt="">
+                        <span id="ncClientNumber"></span>
+                    </div>
+                </div>
+                <form action="/" method="post" class="row form-group" id="ncFormChat">
+                    <input class="form-control col-sm-6 col-md-2" type="text" placeholder="Name" value="<%= name %>" id="ncName">
+                    <input class="form-control col-sm-6 col-md-8" type="text" placeholder="Hi, enter a message..." id="ncMessage" autofocus>
+                    <input class="btn btn-primary col-sm-12 col-md-2" type="submit" placeholder="Send">
+                </form>
+            </div>
+            <div class="container container-border text-center">
+                <h3 class="padding-title">Tools</h3>
+                <div class="row d-flex flex-column align-items-center">
+                    <div class="col-md-6 col-sm-12">
+                        <h4>Ban an @IP from chat</h4>
+                        <i>You can directly click on an user @IP on the chat to ban that address</i>
+                        <form class="form-group d-flex flex-column" id="ncFormIpToBan">
+                            <input type="text" class="form-control" id="ncInputIpToBan" placeholder="192.168.0.1">
+                            <input type="submit" class="btn btn-danger" value="Ban">
+                        </form>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h4>Add an administrator</h4>
+                        <form class="form-group d-flex flex-column" id="ncFormAddAdmin">
+                            <label for="ncNewAdminName">Admin name</label>
+                            <input type="text" class="form-control" placeholder="(Max 10 characters)" id="ncNewAdminName">
+                            <label for="ncNewAdminPwd1">Admin password</label>
+                            <input type="password" class="form-control" id="ncNewAdminPwd1">
+                            <label for="ncNewAdminPwd2">Retype password</label>
+                            <input type="password" class="form-control" id="ncNewAdminPwd2">
+                            <input type="submit" class="btn btn-primary" value="Add">
+                        </form>
+                    </div>
+                </div>
+                <h3 class="padding-title">Files content</h3>
+                <div class="row d-flex">
+                    <div class="col-md-6 col-sm-12">
+                        <h4>Banned addresses</h4>
+                        <i>From "node-chat/banned-addresses" file</i>
+                        <div id="ncBannedAddressesZone">
+                            <% for (let i in bannedAddresses) { %>
+                                <p><%= bannedAddresses[i] %></p>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h4>Administrators</h4>
+                        <i>Administrators all have all rights. Access the "node-chat/users" file to manage admins.</i>
+                        <div id="ncUsersZone">
+                            <% for (let i in users) { %>
+                                <p><%= users[i] %></p>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="d-flex justify-content-center align-items-center">
+            <p>Made in France by coutable.n</p>
+            </footer>
+
+        <!-- scripts -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/node-chat/js/node-chat-admin-client.js"></script>
+    </body>
+</html>
