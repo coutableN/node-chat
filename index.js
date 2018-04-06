@@ -1,5 +1,5 @@
 /*
-*	nodeChat
+*	node-chat-js
 *	by Nicolas Coutable
 *	nicolas-coutable.fr
 *	coutable.n@hotmail.fr
@@ -13,7 +13,7 @@ exports.createChatServer = (app, server) => {
 	const io = require('socket.io').listen(server);
 	const fs = require('fs');
 	const path = require('path');
-	const pathToFiles = 'node_modules/nodeChat/';
+	const pathToFiles = 'node_modules/node-chat-js/';
 	const bodyParser = require('body-parser');
 
 	// global bannedAddresses & users (out of IO scope)
@@ -26,10 +26,10 @@ exports.createChatServer = (app, server) => {
 	// });
 
 	app.set('view engine', 'ejs')
-	// use nodeChat ejs views
-	.set('views', path.join(__dirname, '../nodeChat/views'))
+	// use node-chat-js ejs views
+	.set('views', path.join(__dirname, '../node-chat-js/views'))
 	// virtual path for static client files
-	.use('/nodeChat', express.static(__dirname + '/public'))
+	.use('/node-chat-js', express.static(__dirname + '/public'))
 	.use('/bootstrap', express.static(__dirname + '/../bootstrap/dist'))
 	.use(bodyParser.urlencoded({ extended : true }))
 	.use(bodyParser.json())

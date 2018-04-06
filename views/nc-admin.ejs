@@ -2,22 +2,22 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Admin | nodeChat</title>
+        <title>Admin | node-chat-js</title>
         <!-- bootstrap -->
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
         <!-- styles.css -->
-        <link rel="stylesheet" href="/nodeChat/css/styles.css">
+        <link rel="stylesheet" href="/node-chat-js/css/styles.css">
     </head>
 
     <body>
         <div class="text-center header">
-            <h4>nodeChat-admin</h4>
+            <h4>node-chat-js-admin</h4>
         </div>
             <div class="container d-flex flex-column justify-content-center">
                 <div id="ncChatZone">
                     <div class="alert div-info text-center">
                         <h6>Hello <b><%= name %></b>, you are admin</h6>
-                        <img src="/nodeChat/img/user.svg" width=20 height=20 alt="">
+                        <img src="/node-chat-js/img/user.svg" width=20 height=20 alt="">
                         <span id="ncClientNumber"></span>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="row d-flex">
                     <div class="col-md-6 col-sm-12">
                         <h4>Banned addresses</h4>
-                        <i>From "nodeChat/banned-addresses" file</i>
+                        <i>From "node-chat-js/banned-addresses" file</i>
                         <div id="ncBannedAddressesZone">
                             <% for (let i in bannedAddresses) { %>
                                 <p><%= bannedAddresses[i] %></p>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <h4>Administrators</h4>
-                        <i>Administrators all have all rights. Access the "nodeChat/users" file to manage admins.</i>
+                        <i>Administrators all have all rights. Access the "node-chat-js/users" file to manage admins.</i>
                         <div id="ncUsersZone">
                             <% for (let i in users) { %>
                                 <p><%= users[i] %></p>
@@ -74,11 +74,11 @@
                 </div>
             </div>
             <footer class="d-flex justify-content-center align-items-center">
-                <p>Made by Nicolas Coutable, <a href="https://github.com/coutableN/nodeChat" target="_blank">GitHub repository</a></p>
+                <p>Made by Nicolas Coutable, <a href="https://github.com/coutableN/node-chat-js" target="_blank">GitHub repository</a></p>
             </footer>
 
         <!-- scripts -->
         <script src="/socket.io/socket.io.js"></script>
-        <script src="/nodeChat/js/nodeChat-admin-client.js"></script>
+        <script src="/node-chat-js/js/node-chat-js-admin-client.js"></script>
     </body>
 </html>
