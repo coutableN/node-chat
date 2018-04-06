@@ -1,6 +1,6 @@
 # node-chat
 
-A simple file based, real time chat client-server solution in node.js, ready to be deployed in your applications in two lines.
+A simple file based, real time chat client-server solution in node.js, ready to be deployed in your applications in a single line of code.
 
 ## Table of content
 * [Intro](#intro)
@@ -37,8 +37,7 @@ Then, you can createChatServer.
 const app = require('express')();
 const server = require('http').createServer(app);
 // create a chat server
-const nodeChat = require('node-chat');
-nodeChat.createChatServer(app, server);
+const nodeChat = require('node-chat').createChatServer(app, server);
 ```
 Now your application has 3 new urls
 * **/chat** : a single page application which is the chat room.
