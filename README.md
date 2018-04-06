@@ -161,7 +161,7 @@ If you want to custom the node-chat, you need to know the functions and events u
 
 ### Client
 
-**node-chat clients IO event listeners**
+**node-chat client IO event listeners**
 * updateClientNumber
 * message
 * messageFromAdmin
@@ -197,7 +197,8 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 ```
 
 ### Server
-**node-chat server IO event listeners**
+
+**node-chat server IO event emitters / listeners**
 * connection
 * message
 * messageFromAdmin
@@ -205,13 +206,6 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 * banIp
 * addAdmin
 * disconnect
-
-
-**node-chat server IO event emitters**
-* updateClientNumber
-* message
-* messageFromAdmin
-* banned
 
 **check index.js file fore more**
 
