@@ -29,7 +29,10 @@ The solution comes with a single page application as the chat room at **<your_do
 ## Deploy
 
 **First of all you need the node-chat-js folder in your node_modules.**
-**To check you have all the dependencies, run npm install**
+
+```bash
+$ npm install node-chat-js
+```
 
 Then, you can createChatServer.
 
