@@ -119,7 +119,7 @@ exports.createChatServer = (app, server) => {
 		socket.on('banIp', (ip) => {
 			logWriter.write(`ADMIN_BAN -- ${ dateUtil.fullTime() } -- ${ ip }\n`);
 			let banWriter = fs.createWriteStream(`${ pathToFiles }banned-addresses`, { flags : 'a' });
-			banWriter.write(`${ ip }\n`);
+			banWriter.write(`\n${ ip }`);
 			banWriter.end();
 			banClient(ip);
 			globalBannedAddresses.push(ip);
@@ -128,7 +128,7 @@ exports.createChatServer = (app, server) => {
 		// add administrator
 		socket.on('addAdmin', (data) => {
 			let usersWriter = fs.createWriteStream(`${ pathToFiles }users`, { flags : 'a' });
-			usersWriter.write(`${ data.name } ${ data.password }\n`);
+			usersWriter.write(`\n${ data.name } ${ data.password }`);
 			usersWriter.end();
 			globalUsersFormated.push(data.name)
 		});
