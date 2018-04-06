@@ -1,4 +1,4 @@
-# node-chat
+# nodeChat
 
 A simple file based, real time chat client-server solution in node.js, ready to be deployed in your applications in a single line of code.
 
@@ -16,7 +16,7 @@ A simple file based, real time chat client-server solution in node.js, ready to 
 
 ## Intro
 
-node-chat is a node.js package to deploy a mono-room chat server that includes :
+nodeChat is a node.js package to deploy a mono-room chat server that includes :
 
 * Real time communication based on web sockets
 * Administration panel
@@ -28,7 +28,7 @@ The solution comes with a single page application as the chat room at **<your_do
 
 ## Deploy
 
-**First of all you need the node-chat folder in your node_modules.**
+**First of all you need the nodeChat folder in your node_modules.**
 **To check you have all the dependencies, run npm install**
 
 Then, you can createChatServer.
@@ -37,7 +37,7 @@ Then, you can createChatServer.
 const app = require('express')();
 const server = require('http').createServer(app);
 // create a chat server
-const nodeChat = require('node-chat').createChatServer(app, server);
+const nodeChat = require('nodeChat').createChatServer(app, server);
 ```
 Now your application has 3 new urls
 * **/chat** : a single page application which is the chat room.
@@ -61,19 +61,19 @@ Go to **/nc-login** and log with a correct user/password to get **/nc-admin**.
 
 A default user is set : root, password : root. You must delete this entry in production.
 
-Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
+Users are specified in the nodeChat/users file and can be added in the admin panel or directly in the file, see [users](#users)
 
 ## Create a chat client in another page
 
 If you want to include the chat elsewhere, you can create a chat client in the HTML page you want.
 This client will still be related to the /nc-admin panel.
 
-**Don't forget to add the node-chat-client.js file and the socket.io dependency**
+**Don't forget to add the nodeChat-client.js file and the socket.io dependency**
 ```javascript
 <script src="/socket.io/socket.io.js"></script>
-<script src="/node-chat/js/node-chat-client.js"></script>
+<script src="/nodeChat/js/nodeChat-client.js"></script>
 ```
-Note : you already have the socket.io folder since it's a specified dependency of node-chat in package.json
+Note : you already have the socket.io folder since it's a specified dependency of nodeChat in package.json
 
 Minimum elements :
 
@@ -96,7 +96,7 @@ You can look at the chat.ejs core content to see how it's done in the **/chat** 
 		<!-- you need an element with #ncChatZone, it's where all messages are appended -->
                 <div id="ncChatZone">
                     <div class="alert div-info text-center">
-                        <img src="/node-chat/img/user.svg" width=20 height=20 alt="">
+                        <img src="/nodeChat/img/user.svg" width=20 height=20 alt="">
 			<!-- element #ncClientNumber gets in real time the number of clients connected to the chat -->
                         <span id="ncClientNumber"></span>
                     </div>
@@ -113,7 +113,7 @@ You can look at the chat.ejs core content to see how it's done in the **/chat** 
 
 ## Files
 
-**node-chat is based on files and not dependent to any database.**
+**nodeChat is based on files and not dependent to any database.**
 
 ### banned-addresses
 
@@ -156,11 +156,11 @@ in the [users] file in your logs.
 
 ## Functions
 
-If you want to custom the node-chat, you need to know the functions and events under the hood :
+If you want to custom the nodeChat, you need to know the functions and events under the hood :
 
 ### Client
 
-**node-chat client IO event listeners**
+**nodeChat client IO event listeners**
 * updateClientNumber
 * message
 * messageFromAdmin
@@ -188,7 +188,7 @@ socket.on('banned', (data) => {
     appendMessageToDOM('BAN' , data.message, 'banned', data.time);
 });
 ```
-**node-chat clients can only emit message**
+**nodeChat clients can only emit message**
 ```javascript
 // EMITTER
 
@@ -197,7 +197,7 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 
 ### Server
 
-**node-chat server IO event emitters / listeners**
+**nodeChat server IO event emitters / listeners**
 * connection
 * message
 * messageFromAdmin
