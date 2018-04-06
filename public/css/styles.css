@@ -61,3 +61,18 @@ form, form * {
 footer {
     margin-top: 2em;
 }
+.wrapper {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.submit-btn {
+    width: 100%;
+    margin-top: -.2em;
+}
+.alert p {                
+    padding: 0px;
+    margin: 0px;
+}
