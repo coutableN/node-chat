@@ -40,7 +40,7 @@ Then, you can createChatServer.
 const app = require('express')();
 const server = require('http').createServer(app);
 // create a chat server
-const node-chat-js = require('node-chat-js').createChatServer(app, server);
+const nodeChat = require('node-chat-js').createChatServer(app, server);
 ```
 Now your application has 3 new urls
 * **/chat** : a single page application which is the chat room.
