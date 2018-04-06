@@ -19,7 +19,7 @@ socket.on('updateClientNumber', (data) => {
 });
 
 // add message from server to DOM
-socket.on('messageByAdmin', (data) => {
+socket.on('messageForAdmin', (data) => {
     appendAdminMessageToDOM(data.name, data.message, data.ipClient, data.time);
 });
 
@@ -69,9 +69,17 @@ ncFormAddAdmin.addEventListener('submit', (e) => {
     }
 });
 
-// event ban @IP on click
+// event ban @IP
 const banIp = (ip) => {
     socket.emit('banIp', ip);
+}
+
+// ban @IP on user @IP click on chat
+const banIpClick = (ip) => {
+    banIp(ip);
+    let p = document.createElement('p');
+    p.innerHTML = ip;
+    ncBannedAddressesZone.appendChild(p);
 }
 
 // event add new admin
@@ -102,7 +110,7 @@ const appendAdminMessageToDOM = (name, message, ip, time) => {
     }
     let p = document.createElement('p');
     p.innerHTML = `
-    ${ time } - <span class="delete-ip" onclick="banIp(this.innerHTML)">${ ip }</span> - <b>${ name }</b> -  ${ message }
+    ${ time } - <span class="delete-ip" onclick="banIpClick(this.innerHTML)">${ ip }</span> - <b>${ name }</b> -  ${ message }
     `;
     ncChatZone.appendChild(p);
 };

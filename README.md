@@ -60,6 +60,8 @@ First, you have to be authentified.
 
 Go to **/nc-login** and log with a correct user/password to get **/nc-admin**.
 
+A default user is set : root, password : root. You must delete this entry in production.
+
 Users are specified in the node-chat/users file and can be added in the admin panel or directly in the file, see [users](#users)
 
 ## Create a chat client in another page
@@ -199,6 +201,7 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 * connection
 * message
 * messageFromAdmin
+* messageForAdmin
 * banIp
 * addAdmin
 * disconnect
