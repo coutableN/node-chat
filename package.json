@@ -14,5 +14,11 @@
     "type": "git",
     "url": "https://github.com/coutableN/node-chat-js"
   },
-  "author": "Nicolas Coutable"
+  "keywords" : [
+    "managable chat system",
+    "chat for node.js",
+    "real time chat with ban system"
+  ],
+  "author": "Nicolas Coutable",
+  "license": "(MIT OR Apache-2.0)" 
 }
