@@ -21,9 +21,6 @@ exports.createChatServer = (app, server) => {
 	const globalUsers = fs.readFileSync(`${ pathToFiles }users`, 'utf-8').split(/\r?\n/);
 	// to render users list without password
 	const globalUsersFormated = formatUsers(globalUsers);
-	// const globalUsersFormated = globalUsers.map((userInfo) => {
-	// 	return userInfo.split(' ')[0];
-	// });
 
 	app.set('view engine', 'ejs')
 	// use node-chat-js ejs views
