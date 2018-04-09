@@ -3,7 +3,7 @@
 *	by Nicolas Coutable
 *	nicolas-coutable.fr
 *	coutable.n@hotmail.fr
-*	v0.0.1
+*	v0.0.3
 *	04/2018
 *
 */
@@ -15,6 +15,17 @@ exports.createChatServer = (app, server) => {
 	const path = require('path');
 	const pathToFiles = 'node_modules/node-chat-js/';
 	const bodyParser = require('body-parser');
+	const bcrypt = require('bcrypt');
+	// difficulty of the hash function
+	const saltRounds = 10;
+	// if the users file is empty, enter in setup mode
+	let setupMode = fs.readFileSync(`${ pathToFiles }users`, 'utf-8') === '';
+	// watch any change on the users file
+	const setupModeWatcher = fs.watch(`${ pathToFiles }users`);
+
+	setupModeWatcher.on('change', () => {
+		setupMode = fs.readFileSync(`${ pathToFiles }users`, 'utf-8') === '';
+	});
 
 	// global bannedAddresses & users (out of IO scope)
 	const globalBannedAddresses = fs.readFileSync(`${ pathToFiles }banned-addresses`, 'utf-8').split(/\r?\n/);
@@ -37,23 +48,46 @@ exports.createChatServer = (app, server) => {
 	})
 
 	.get('/nc-login', (req, res) => {
-		res.render('nc-login.ejs', { errorLogin : false });
+		// setup mode if the file 'users' is empty else login page
+		if (setupMode) {
+			console.log('node-chat-js : You are in setup mode, please create an admin.');
+			res.render('nc-admin.ejs', {
+				name : 'setup-mode',
+				bannedAddresses : null,
+				users : null,
+				setupMode : true
+			});
+		} else {
+			res.render('nc-login.ejs', { errorLogin : false });
+		}
 	})
 
 	.post('/nc-admin', (req, res) => {
-		// read users and login if user is correct
+		// read users file
 		let users = fs.readFileSync(`${ pathToFiles }users`, 'utf-8').split(/\r?\n/);
 
+		// compare login name with users in file, if name match => compare hashes
+		// if hashes are equal => login, else redirect with error message (password error)
+		// render error if last name is not an admin name (name error)
 		for (let i = 0; i < users.length; i++) {
-			if (req.body.login === users[i].split(' ')[0] && req.body.pwd === users[i].split(' ')[1]) {
-				res.render('nc-admin.ejs', {
-					name : req.body.login,
-					bannedAddresses : globalBannedAddresses,
-					users : globalUsersFormated
+			if (req.body.login === users[i].split(' ')[0]) {
+				bcrypt.compare(req.body.pwd, users[i].split(' ')[1], (err, bcryptRes) => {
+					if (bcryptRes === true) {
+						res.render('nc-admin.ejs', {
+							name : req.body.login,
+							bannedAddresses : globalBannedAddresses,
+							users : globalUsersFormated,
+							setupMode : false
+						});
+					} else {
+						res.render('nc-login.ejs', { errorLogin : true });
+					}
 				});
 			}
+			if (req.body.login != users[users.length-1].split(' ')[0]) {
+				res.render('nc-login.ejs', { errorLogin : true });
+			}
 		}
-		res.render('nc-login.ejs', { errorLogin : true });
 	})
 
 	// webSockets
@@ -124,10 +158,12 @@ exports.createChatServer = (app, server) => {
 
 		// add administrator
 		socket.on('addAdmin', (data) => {
-			let usersWriter = fs.createWriteStream(`${ pathToFiles }users`, { flags : 'a' });
-			usersWriter.write(`\n${ data.name } ${ data.password }`);
-			usersWriter.end();
-			globalUsersFormated.push(data.name)
+			bcrypt.hash(data.password, saltRounds, (err, hash) => {
+				let usersWriter = fs.createWriteStream(`${ pathToFiles }users`, { flags : 'a' });
+				usersWriter.write(`\n${ data.name } ${ hash }`);
+				usersWriter.end();
+			});
+			globalUsersFormated.push(data.name);
 		});
 
 		// update client number on disconnect

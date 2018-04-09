@@ -12,8 +12,16 @@
     <body>
         <div class="text-center header">
             <h4>node-chat-js-admin</h4>
+            <a href="nc-login" class="disconnect-link">disconnect</a>
         </div>
             <div class="container d-flex flex-column justify-content-center">
+                <% if (setupMode) { %>
+                <div class="alert alert-success text-center">
+                    <h4>You are in setup mode, please add an administrator below and disconnect to log in</h4>
+                    <p>Thank you for choosing node-chat-js.</p>
+                </div>
+                <% } %>
+                <% if (!setupMode) { %>
                 <div id="ncChatZone">
                     <div class="alert div-info text-center">
                         <h6>Hello <b><%= name %></b>, you are admin</h6>
@@ -26,10 +34,12 @@
                     <input class="form-control col-sm-6 col-md-8" type="text" placeholder="Hi, enter a message..." id="ncMessage" autofocus>
                     <input class="btn btn-primary col-sm-12 col-md-2" type="submit" placeholder="Send">
                 </form>
+                <% } %>
             </div>
             <div class="container container-border text-center">
                 <h3 class="padding-title">Tools</h3>
                 <div class="row d-flex flex-column align-items-center">
+                    <% if (!setupMode) { %>
                     <div class="col-md-6 col-sm-12">
                         <h4>Ban an @IP from chat</h4>
                         <i>You can directly click on an user @IP in the chat to ban that address</i>
@@ -38,6 +48,7 @@
                             <input type="submit" class="btn btn-danger" value="Ban">
                         </form>
                     </div>
+                    <% } %>
                     <div class="col-md-6 col-sm-12">
                         <h4>Add an administrator</h4>
                         <form class="form-group d-flex flex-column" id="ncFormAddAdmin">
@@ -51,6 +62,7 @@
                         </form>
                     </div>
                 </div>
+                <% if (!setupMode) { %>
                 <h3 class="padding-title">Files content</h3>
                 <div class="row d-flex">
                     <div class="col-md-6 col-sm-12">
@@ -72,6 +84,7 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
             </div>
             <footer class="d-flex justify-content-center align-items-center">
                 <p>Made by Nicolas Coutable, <a href="https://github.com/coutableN/node-chat-js" target="_blank">GitHub repository</a></p>
@@ -79,6 +92,10 @@
 
         <!-- scripts -->
         <script src="/socket.io/socket.io.js"></script>
-        <script src="/node-chat-js/js/node-chat-js-admin-client.js"></script>
+        <% if (!setupMode) { %>
+            <script src="/node-chat-js/js/node-chat-js-admin-client.js"></script>
+        <% } else { %>
+            <script src="/node-chat-js/js/setup-mode.js"></script>
+        <% } %>
     </body>
 </html>

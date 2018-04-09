@@ -8,7 +8,9 @@
     "ejs": "^2.5.8",
     "express": "^4.16.3",
     "socket.io": "^2.1.0",
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^4.0.0",
+    "bcrypt": "^2.0.0",
+    "node-gyp": "^3.6.2"
   },
   "repository": {
     "type": "git",

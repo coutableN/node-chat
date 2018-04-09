@@ -18,6 +18,9 @@
     padding: .5em;
     margin-bottom: 1em;
 }
+.disconnect-link, .disconnect-link:hover {
+    color: #dc3545;
+}
 .container-border {
     box-shadow: 2px 0 15px -4px rgba(31, 73, 125, 0.8), -2px 0 8px -4px rgba(31, 73, 125, 0.8);
     padding: 8px;
