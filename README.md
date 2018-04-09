@@ -62,9 +62,11 @@ First, you have to be authentified.
 
 Go to **/nc-login** and log with a correct user/password to get **/nc-admin**.
 
-A default user is set : root, password : root. You must delete this entry in production.
+If it's the first time you try to log-in, you will be in **setup mode** and you'll have to create the first admin.
 
-Users are specified in the node-chat-js/users file and can be added in the admin panel or directly in the file, see [users](#users)
+Then disconnect as asked and log in with correct user/password.
+
+Users are specified in the node-chat-js/users file and can be added in the admin panel, passwords are salted and hashed with bcrypt, see [users].(#users)
 
 ## Create a chat client in another page
 
@@ -138,10 +140,9 @@ name1 password1
 
 name2 password2
 
-When creating an admin from the admin panel, name must be less than 10 chars and password more than 4.
-But you can do what you want in the users file.
+admins must be created from the admin panel and cannot be added directly to this file since passwords are salted and encrypted with bcrypt.
 
-Exemple : "   "/n (three space and a new line) will allow you to login without user name or password. **DON'T DO THIS IN PRODUCTION OR ANYONE CAN ACCESS THE ADMIN PANEL**
+If the users file is empty, the first try to get **/nc-login** will put you in setup mode and you'll have to set the first admin.
 
 ### log
 
