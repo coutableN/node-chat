@@ -1,6 +1,6 @@
 {
   "name": "node-chat-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "client-server chat system : real time communication, administration panel, ban by @IP... (node.js)",
   "main": "index.js",
   "dependencies": {
@@ -16,11 +16,11 @@
     "type": "git",
     "url": "https://github.com/coutableN/node-chat-js"
   },
-  "keywords" : [
+  "keywords": [
     "managable chat system",
     "chat for node.js",
     "real time chat with ban system"
   ],
   "author": "Nicolas Coutable",
-  "license": "(MIT OR Apache-2.0)" 
+  "license": "(MIT OR Apache-2.0)"
 }
