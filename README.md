@@ -206,6 +206,7 @@ socket.emit('message', { name : ncName.value, message : ncMessage.value });
 * message
 * messageFromAdmin
 * messageForAdmin
+* isAdmin
 * banIp
 * addAdmin
 * disconnect
