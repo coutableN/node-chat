@@ -176,7 +176,7 @@ exports.createChatServer = (app, server) => {
 
 		// add administrator
 		socket.on('addAdmin', (data) => {
-			if(socket.handshake.session.isAdmin) {
+			if(socket.handshake.session.isAdmin || setupMode) {
 				bcrypt.hash(data.password, saltRounds, (err, hash) => {
 					let usersWriter = fs.createWriteStream(`${ pathToFiles }users`, { flags : 'a' });
 					usersWriter.write(`\n${ data.name } ${ hash }`);
