@@ -3,7 +3,7 @@
 *	by Nicolas Coutable
 *	nicolas-coutable.fr
 *	coutable.n@hotmail.fr
-*	v0.0.3
+*	v0.0.4
 *	04/2018
 *
 */
@@ -15,6 +15,13 @@ exports.createChatServer = (app, server) => {
 	const path = require('path');
 	const pathToFiles = 'node_modules/node-chat-js/';
 	const bodyParser = require('body-parser');
+	// create a session with a random string as secret
+	const session = require('express-session')({
+		secret : randomString(),
+		resave : true,
+		saveUninitialized : true
+	});
+	const sharedSession = require('express-socket.io-session');
 	const bcrypt = require('bcrypt');
 	// difficulty of the hash function
 	const saltRounds = 10;
@@ -32,6 +39,11 @@ exports.createChatServer = (app, server) => {
 	const globalUsers = fs.readFileSync(`${ pathToFiles }users`, 'utf-8').split(/\r?\n/);
 	// to render users list without password
 	const globalUsersFormated = formatUsers(globalUsers);
+
+	// session
+	app.use(session);
+	// share session with socket.io connections
+	io.use(sharedSession(session));
 
 	app.set('view engine', 'ejs')
 	// use node-chat-js ejs views
@@ -73,6 +85,8 @@ exports.createChatServer = (app, server) => {
 			if (req.body.login === users[i].split(' ')[0]) {
 				bcrypt.compare(req.body.pwd, users[i].split(' ')[1], (err, bcryptRes) => {
 					if (bcryptRes === true) {
+						// auth admin in session
+						req.session.isAdmin = true;
 						res.render('nc-admin.ejs', {
 							name : req.body.login,
 							bannedAddresses : globalBannedAddresses,
@@ -141,29 +155,35 @@ exports.createChatServer = (app, server) => {
 
 		// message from admin => broadcast to all clients with style
 		socket.on('messageFromAdmin', (data) => {
-			logWriter.write(`ADMIN_MSG -- ${ dateUtil.fullTime() } name : ${ data.name } MESSAGE : ${ data.message }\n`);
-			socket.broadcast.emit('messageFromAdmin', { name : data.name, message : data.message, time : dateUtil.time() });
+			if(socket.handshake.session.isAdmin) {
+				logWriter.write(`ADMIN_MSG -- ${ dateUtil.fullTime() } name : ${ data.name } MESSAGE : ${ data.message }\n`);
+				socket.broadcast.emit('messageFromAdmin', { name : data.name, message : data.message, time : dateUtil.time() });
+			}
 		});
 
 		// ban this IP on request from an admin
 		// server log, write to banned-addresses, call banClient(), push to globalBannedAddresses
 		socket.on('banIp', (ip) => {
-			logWriter.write(`ADMIN_BAN -- ${ dateUtil.fullTime() } -- ${ ip }\n`);
-			let banWriter = fs.createWriteStream(`${ pathToFiles }banned-addresses`, { flags : 'a' });
-			banWriter.write(`\n${ ip }`);
-			banWriter.end();
-			banClient(ip);
-			globalBannedAddresses.push(ip);
+			if(socket.handshake.session.isAdmin) {
+				logWriter.write(`ADMIN_BAN -- ${ dateUtil.fullTime() } -- ${ ip }\n`);
+				let banWriter = fs.createWriteStream(`${ pathToFiles }banned-addresses`, { flags : 'a' });
+				banWriter.write(`\n${ ip }`);
+				banWriter.end();
+				banClient(ip);
+				globalBannedAddresses.push(ip);
+			}
 		});
 
 		// add administrator
 		socket.on('addAdmin', (data) => {
-			bcrypt.hash(data.password, saltRounds, (err, hash) => {
-				let usersWriter = fs.createWriteStream(`${ pathToFiles }users`, { flags : 'a' });
-				usersWriter.write(`\n${ data.name } ${ hash }`);
-				usersWriter.end();
-			});
-			globalUsersFormated.push(data.name);
+			if(socket.handshake.session.isAdmin) {
+				bcrypt.hash(data.password, saltRounds, (err, hash) => {
+					let usersWriter = fs.createWriteStream(`${ pathToFiles }users`, { flags : 'a' });
+					usersWriter.write(`\n${ data.name } ${ hash }`);
+					usersWriter.end();
+				});
+				globalUsersFormated.push(data.name);
+			}
 		});
 
 		// update client number on disconnect
@@ -180,6 +200,16 @@ const formatUsers = (arrayOfUsers) => {
 	});
 	return arrayOfUsers;
 };
+
+// create a random string
+const randomString = () => {
+	const alphanumeric = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	let res = '';
+	for (let i = 0; i < 10; i++) {
+		res += alphanumeric.charAt(Math.floor(Math.random() * alphanumeric.length));
+	}
+	return res;
+}
 
 //dateUtil object
 const date = new Date();
