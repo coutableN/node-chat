@@ -3,7 +3,7 @@
 *	by Nicolas Coutable
 *	nicolas-coutable.fr
 *	coutable.n@hotmail.fr
-*	v0.0.4
+*	v0.0.5
 *	04/2018
 *
 */
